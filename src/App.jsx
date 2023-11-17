@@ -1,21 +1,24 @@
-import { useState } from 'react'
-import { MiApi } from './components/MiApi'
-import { Buscador } from './components/Buscador';
-import './App.css'
+import React from "react";
+import { MiApi } from "./components/MiApi";
+import "./App.css";
 
 function App() {
-  //const [filtro, setFiltro] = useState('');
 
-  // const handleLimpiar = () => {
-  //   setFiltro('');
-  // };
-
-  return (
-    <>
-      {/* <MiApi filtro={filtro} /> */}
-      <MiApi />
-    </>
-  )
+    return (
+        <>
+            <div className="container-fluid">
+                <div className="pokemon-container">
+                    <h1 
+                    style={{color: '#4754CD'}}
+                    className="mb-5"
+                    >
+                      Pokemon finder
+                    </h1>
+                    <MiApi />
+                </div>
+            </div>
+        </>
+    );
 }
 
-export default App
+export default App;
