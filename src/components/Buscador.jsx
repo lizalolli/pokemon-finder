@@ -4,11 +4,12 @@ import PropTypes from "prop-types";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 
-export const Buscador = ({ pokemones, buscador, setBuscador }) => {
+export const Buscador = ({ buscador, setBuscador }) => {
+
     const handleLimpiarClick = () => {
-        setBuscador("");
+        setBuscador('');
     };
-    
+
     return (
         <>
             <InputGroup className="mb-3">

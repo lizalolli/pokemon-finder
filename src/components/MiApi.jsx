@@ -4,23 +4,22 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Buscador } from "./Buscador";
 import { Card, Col, Row, Spinner } from "react-bootstrap";
 
-const urlApi = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=150";
+const urlApi = "https://pokeapi.co/api/v2/pokemon?offset=0&limit=151";
 
 export const MiApi = () => {
     const [pokemones, setPokemones] = useState([]);
-    const [buscador, setBuscador] = useState("");
+    const [buscador, setBuscador] = useState('');
     const [isLoading, setIsLoading] = useState(true);
 
     const traerCaractPokemones = async (url) => {
         try {
             const response = await axios.get(url);
-            console.log(url);
             return response.data;
         } catch (error) {
             console.error("Error fetching Pokemon details:", error);
         }
     };
-    
+
     const traerPokemones = async () => {
         try {
             const response = await axios(urlApi);
@@ -32,6 +31,9 @@ export const MiApi = () => {
                     return { ...pokemon, caract };
                 })
             );
+
+            pokemonesConCaract.sort((a, b) => a.caract.order - b.caract.order);
+
             setPokemones(pokemonesConCaract);
             setIsLoading(false);
         } catch (error) {
@@ -47,8 +49,6 @@ export const MiApi = () => {
     return (
         <>
             <Buscador
-                pokemones={pokemones}
-                setPokemones={setPokemones}
                 buscador={buscador}
                 setBuscador={setBuscador}
             />
